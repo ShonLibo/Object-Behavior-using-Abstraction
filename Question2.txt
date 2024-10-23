@@ -1,0 +1,163 @@
+public interface ObjectBehavior {
+    void performAction();
+    void haltAction();
+     int getAttribute();
+     String  getType();
+
+}
+
+
+public class Type1 implements ObjectBehavior {
+    int Attribute = 10 ;
+    String Detail1 = "Type 1 is a Runner";
+
+    @Override
+    public void performAction() {
+        System.out.println("Type 1 is Running Away.");
+    }
+
+    @Override
+    public void haltAction() {
+        System.out.println("Type 1 has Stop Running.");
+    }
+
+    @Override
+    public int getAttribute() {
+    return Attribute;
+    }
+
+    @Override
+    public String getType() {
+    return  "getType1";
+    }
+
+    public String getDetail1(){
+        return Detail1;
+    }
+}
+
+
+public class Type2 implements ObjectBehavior {
+    int Attribute =20;
+    String Detail2 = "Type 2 is a Teacher";
+
+
+    @Override
+    public void performAction() {
+        System.out.println("Type 2 is Teaching a Class");
+    }
+
+    @Override
+    public void haltAction() {
+        System.out.println("Type 2 has stopped Teaching the Class");
+
+    }
+
+    @Override
+    public int getAttribute() {
+    return Attribute;
+    }
+
+    @Override
+    public String getType() {
+    return "getType2";
+    }
+
+    public String getDetail2(){
+
+        return Detail2;
+    }
+}
+
+
+
+public class Type3 implements ObjectBehavior {
+    int Attribute = 30;
+    String Detail3 = "Type 3 is a foody";
+
+    @Override
+    public void performAction() {
+        System.out.println("Type 3 is eating food");
+    }
+
+    @Override
+    public void haltAction() {
+        System.out.println( "Type 3 has stopped eating the food");
+    }
+
+    @Override
+    public int getAttribute() {
+    return Attribute;
+    }
+
+
+    @Override
+    public String getType() {
+    return  "getType3";
+    }
+
+    public String getDetail3() {
+        return Detail3;
+    }
+
+}
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        ObjectBehavior[] objects = new ObjectBehavior[]{
+                new Type1(),
+                new Type2(),
+                new Type3(),
+        };
+        int i = 0;
+        while (i < objects.length) {
+            ObjectBehavior object = objects[i];
+            object.performAction();
+            System.out.println("Attribute: " + object.getAttribute());
+            System.out.println("Type: " + object.getType());
+
+            if (object instanceof Type1 type1) {
+                System.out.println("Detail1: " + type1.getDetail1());
+            } else if (object instanceof Type2 type2) {
+                System.out.println("Detail2: " + type2.getDetail2());
+            } else if (object instanceof Type3 type3) {
+                System.out.println("Detail3: " + type3.getDetail3());
+            }
+
+            object.haltAction();
+            System.out.println();
+            i++;
+        }
+
+    }
+}
+
+
+
+
+// Result
+
+// Type 1 is Running Away.
+// Attribute: 10
+// Type: getType1
+// Detail1: Type 1 is a Runner
+// Type 1 has Stop Running.
+
+// Type 2 is Teaching a Class
+// Attribute: 20
+// Type: getType2
+// Detail2: Type 2 is a Teacher
+// Type 2 has stopped Teaching the Class
+
+// Type 3 is eating food
+// Attribute: 30
+// Type: getType3
+// Detail3: Type 3 is a foody
+// Type 3 has stopped eating the food
+
+
+
